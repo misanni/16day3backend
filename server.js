@@ -38,9 +38,36 @@ app.get("/", (req, res) => {
     res.send("hello world")
 })
 
-
 app.get("/people", async (req, res) => {
-    try{        
+    try{  
+        const startpeoples =
+        [
+            {
+            name: "Bulbasaur",
+            image: "https://www.shutterstock.com/shutterstock/photos/1416372146/display_1500/stock-photo-piece-of-cheese-isolated-on-white-background-1416372146.jpg",
+            title:"GrassPoison"
+            },
+            {
+                name: "Bulbasaur",
+                image: "http://img.pokemondb.net/artwork/bulbasaur.jpg",
+                title:"GrassPoison"
+                },
+                {
+                    name: "Bulbasaur",
+                    image: "http://img.pokemondb.net/artwork/bulbasaur.jpg",
+                    title:"GrassPoison"
+                    }
+]
+        
+     // Delete all peoples
+  //People.remove({}, (err, data) => {
+    // Spec Starter peoples
+    People.create(startpeoples, (err, data) => {
+      // send created peoples as response to confirm creation
+      //res.json(data);
+    });
+  //});
+      
         res.json(await People.find({}));
     }catch(error){
         res.status(400).json(error)
